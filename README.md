@@ -1,4 +1,4 @@
-# 🌾 Citizen Assist AI — Da cidade ao campo
+# 🌾 Bridge AI — Da cidade ao campo
  
 > **Global Solution 2026.2 · FIAP · 1º ano de Ciência da Computação**
 > Desafio **CitizenTech**: *"Da cidade ao campo, tecnologia para a vida cotidiana."*
@@ -16,7 +16,7 @@
  
 ## 🎯 O desafio
  
-Criar uma solução **CitizenTech** capaz de melhorar a vida das pessoas nas cidades, no campo ou nas comunidades. O case norteador é o **Citizen Assist AI**: um assistente digital introdutório que facilita o acesso de cidadãos a informações úteis do cotidiano (serviços, documentos, direitos e orientações comunitárias), com:
+Criar uma solução **CitizenTech** capaz de melhorar a vida das pessoas nas cidades, no campo ou nas comunidades. O case norteador é o **Bridge AI**: um assistente digital introdutório que facilita o acesso de cidadãos a informações úteis do cotidiano (serviços, documentos, direitos e orientações comunitárias), com:
  
 - um conjunto **verificável** de informações;
 - respostas claras com **referências** e **avisos sobre limitações**;
@@ -164,4 +164,4 @@ Monitoramento da saúde do solo e irrigação existem em abundância no mercado.
  
 ## 📄 Aviso
  
-Projeto acadêmico da FIAP. O Citizen Assist AI **não é um canal oficial** de nenhum órgão público e não substitui o atendimento oficial. Sempre confirme as informações nas fontes indicadas.
+Projeto acadêmico da FIAP. O Bridge AI **não é um canal oficial** de nenhum órgão público e não substitui o atendimento oficial. Sempre confirme as informações nas fontes indicadas.
