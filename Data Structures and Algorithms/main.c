@@ -31,12 +31,12 @@ int CATEGORIA_DO_TIPO[11] = {0, 0, 1, 2, 3, 3, 4, 5, 5, 6, 6};
 int PODE_REPETIR[11] = {0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1};
 
 typedef struct Documento {
-    int id;                    // automatico, unico
-    char titular[100];         // digitado: "Maria Silva"
-    int tipo;                  // indice em TIPOS
-    int categoria;             // indice em CATEGORIAS (preenchido sozinho)
-    char numero[50];           // digitado: "101653218"
-    struct Documento *proximo; // proximo no da lista
+    int id;                    
+    char titular[100];         
+    int tipo;                  
+    int categoria;             
+    char numero[50];           
+    struct Documento *proximo; 
 } Documento;
 
 int proximoId = 1;
@@ -182,7 +182,7 @@ void cadastrar_documento(Documento **cabeca) {
     char numero[50];
     int escolha;
 
-    printf("\nNome do titular: ");
+    printf("Nome do titular: ");
     ler_string(titular, 100);
     
     while (!conferir_nome_valido(titular)) {
@@ -751,7 +751,7 @@ int main() {
     int opcao;
 
     do {
-        printf("\n--- CITIZEN ASSIST AI ---\n");
+        printf("\n=== Data Base Bridge AI ===\n");
         printf("(1) Cadastrar \n");
         printf("(2) Pesquisar (titular / tipo / ID)\n");
         printf("(3) Atualizar \n");
