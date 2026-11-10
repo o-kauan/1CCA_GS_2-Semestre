@@ -2,11 +2,33 @@
 #include <stdlib.h>
 #include <string.h>
 
-const char *TIPOS[6] = {"RG", "CPF", "CNH", "Titulo de eleitor", "Certidao", "Outro"};
+const char *TIPOS[11] = {
+    "RG - Registro Geral",
+    "CPF - Cadastro de Pessoas Fisicas",
+    "CNH - Carteira Nacional de Habilitacao",
+    "Titulo de Eleitor",
+    "Certidao de Nascimento",
+    "Certidao de Casamento",
+    "Cartao Nacional de Saude (Cartao do SUS)",
+    "Carteira do Idoso",
+    "Autodeclaracao Rural (Segurado Especial)",
+    "Matricula do Imovel Rural",
+    "CCIR - Certificado de Cadastro de Imovel Rural"
+};
 
-const char *CATEGORIAS[5] = {"Identidade", "Transito", "Eleitoral", "Registro civil", "Outros"};
+const char *CATEGORIAS[7] = {
+    "Identidade",
+    "Transito",
+    "Eleitoral",
+    "Registro Civil",
+    "Saude",
+    "Beneficios e Previdencia",
+    "Terra Rural"
+};
 
-int CATEGORIA_DO_TIPO[6] = {0, 0, 1, 2, 3, 4};
+int CATEGORIA_DO_TIPO[11] = {0, 0, 1, 2, 3, 3, 4, 5, 5, 6, 6};
+
+int PODE_REPETIR[11] = {0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1};
 
 typedef struct Documento {
     int id;                    // automatico, unico
@@ -110,15 +132,25 @@ void liberar_lista(Documento **cabeca) {
     *cabeca = NULL;
 }
 
-int existe_duplicado(Documento *cabeca, char *titular, int tipo, int ignorar_id) {
+int existe_duplicado(Documento *cabeca, char *titular, int tipo, char *numero, int ignorar_id) {
     Documento *atual = cabeca;
     while (atual != NULL) {
         if (atual->id != ignorar_id && strcmp(atual->titular, titular) == 0 && atual->tipo == tipo) {
-            return 1;
+            if (!PODE_REPETIR[tipo] || strcmp(atual->numero, numero) == 0) {
+                return 1;
+            }
         }
         atual = atual->proximo;
     }
     return 0;
+}
+
+void mostrar_duplicado(char *titular, int tipo, char *numero) {
+    if (PODE_REPETIR[tipo]) {
+        printf("%s ja possui o documento %s com o numero %s cadastrado.\n", titular, TIPOS[tipo], numero);
+    } else {
+        printf("%s ja possui o documento %s cadastrado.\n", titular, TIPOS[tipo]);
+    }
 }
 
 /* ---------------------------------------------------------
@@ -160,24 +192,19 @@ void cadastrar_documento(Documento **cabeca) {
     }
 
     printf("\nTipos de documento:\n");
-    for (int i = 0; i < 6; i++) {
+    for (int i = 0; i < 11; i++) {
         printf("(%d) %s\n", i + 1, TIPOS[i]);
     }
 
     printf("Escolha o tipo: ");
     escolha = ler_inteiro();
 
-    while (escolha < 1 || escolha > 6) {
+    while (escolha < 1 || escolha > 11) {
         printf("ERRO (tipo invalido)\n");
         printf("Tente novamente: ");
         escolha = ler_inteiro();
     }
     int tipo = escolha - 1; 
-
-    if (existe_duplicado(*cabeca, titular, tipo, 0)) {
-        printf("%s ja possui o documento %s cadastrado.\n", titular, TIPOS[tipo]);
-        return;
-    }
 
     printf("\nNumero do documento: ");
     ler_string(numero, 50);
@@ -186,6 +213,11 @@ void cadastrar_documento(Documento **cabeca) {
     printf("ERRO (digite apenas digitos)\n");
     printf("Tente novamente: ");
     ler_string(numero, 50);
+    }
+
+    if (existe_duplicado(*cabeca, titular, tipo, numero, 0)) {
+        mostrar_duplicado(titular, tipo, numero);
+        return;
     }
 
     Documento *novo = criarNo(titular, tipo, numero);
@@ -263,13 +295,13 @@ void pesquisar_por_tipo(Documento *cabeca) {
     int encontrados = 0;
 
     printf("\nTipo de documento:\n");
-    for (int i = 0; i < 6; i++) {
+    for (int i = 0; i < 11; i++) {
         printf("  (%d) %s\n", i + 1, TIPOS[i]);
     }
     printf("Escolha o tipo: ");
     escolha = ler_inteiro();
 
-    while (escolha < 1 || escolha > 6) {
+    while (escolha < 1 || escolha > 11) {
         printf("ERRO (tipo invalido)\n");
         printf("Tente novamente: ");
         escolha = ler_inteiro();
@@ -318,7 +350,7 @@ void pesquisar_documentos(Documento *cabeca) {
         return;
     }
 
-    printf("\nPesquisar por:\n");
+    printf("Pesquisar por:\n");
     printf("  (1) Nome do titular\n");
     printf("  (2) Tipo de documento\n");
     printf("  (3) ID\n");
@@ -364,9 +396,9 @@ void atualizar_titular(Documento *cabeca, Documento *doc) {
         ler_string(novo_titular, 100);
     }
 
-    if (existe_duplicado(cabeca, novo_titular, doc->tipo, doc->id)) {
-        printf("%s ja possui o documento %s cadastrado. Nada foi alterado.\n",
-               novo_titular, TIPOS[doc->tipo]);
+    if (existe_duplicado(cabeca, novo_titular, doc->tipo, doc->numero, doc->id)) {
+        mostrar_duplicado(novo_titular, doc->tipo, doc->numero);
+        printf("Nada foi alterado.\n");
         return;
     }
 
@@ -376,13 +408,13 @@ void atualizar_titular(Documento *cabeca, Documento *doc) {
 
 void atualizar_tipo(Documento *cabeca, Documento *doc) {
     printf("\nTipo de documento:\n");
-    for (int i = 0; i < 6; i++) {
+    for (int i = 0; i < 11; i++) {
         printf("(%d) %s\n", i + 1, TIPOS[i]);
     }
     printf("Escolha o novo tipo: ");
     int escolha = ler_inteiro();
 
-    while (escolha < 1 || escolha > 6) {
+    while (escolha < 1 || escolha > 11) {
         printf("ERRO (tipo invalido)\n");
         printf("Tente novamente: ");
         escolha = ler_inteiro();
@@ -394,9 +426,9 @@ void atualizar_tipo(Documento *cabeca, Documento *doc) {
         return;
     }
 
-    if (existe_duplicado(cabeca, doc->titular, novo_tipo, doc->id)) {
-        printf("%s ja possui o documento %s cadastrado. Nada foi alterado.\n",
-               doc->titular, TIPOS[novo_tipo]);
+    if (existe_duplicado(cabeca, doc->titular, novo_tipo, doc->numero, doc->id)) {
+        mostrar_duplicado(doc->titular, novo_tipo, doc->numero);
+        printf("Nada foi alterado.\n");
         return;
     }
 
@@ -405,7 +437,7 @@ void atualizar_tipo(Documento *cabeca, Documento *doc) {
     printf("Tipo atualizado com sucesso (categoria: %s).\n", CATEGORIAS[doc->categoria]);
 }
 
-void atualizar_numero(Documento *doc) {
+void atualizar_numero(Documento *cabeca, Documento *doc) {
     char novo_numero[50];
 
     printf("\nNovo numero do documento: ");
@@ -415,6 +447,12 @@ void atualizar_numero(Documento *doc) {
         printf("ERRO (digite apenas digitos)\n");
         printf("Tente novamente: ");
         ler_string(novo_numero, 50);
+    }
+
+    if (existe_duplicado(cabeca, doc->titular, doc->tipo, novo_numero, doc->id)) {
+        mostrar_duplicado(doc->titular, doc->tipo, novo_numero);
+        printf("Nada foi alterado.\n");
+        return;
     }
 
     strcpy(doc->numero, novo_numero);
@@ -427,7 +465,7 @@ void atualizar_documento(Documento *cabeca) {
         return;
     }
 
-    printf("\nPrimeiro, localize o documento que deseja atualizar.\n");
+    printf("Primeiro, localize o documento que deseja atualizar.\n");
     pesquisar_documentos(cabeca);
 
     printf("\nDigite o ID do documento a atualizar (0 para cancelar): ");
@@ -468,7 +506,7 @@ void atualizar_documento(Documento *cabeca) {
                 atualizar_tipo(cabeca, doc);
                 break;
             case 3:
-                atualizar_numero(doc);
+                atualizar_numero(cabeca, doc);
                 break;
             case 0:
                 printf("Atualizacao concluida.\n");
@@ -511,7 +549,7 @@ void excluir_documento(Documento **cabeca) {
         return;
     }
 
-    printf("\nPrimeiro, localize o documento que deseja excluir.\n");
+    printf("Primeiro, localize o documento que deseja excluir.\n");
     pesquisar_documentos(*cabeca);
 
     printf("\nDigite o ID do documento a excluir (0 para cancelar): ");
@@ -618,7 +656,7 @@ void ordenar_documentos(Documento **cabeca) {
         return;
     }
 
-    printf("\nOrdenar por:\n");
+    printf("Ordenar por:\n");
     printf("(1) Tipo de documento (RG, CPF, CNH...)\n");
     printf("(2) Nome do titular (A-Z)\n");
     printf("(3) ID (ordem de cadastro)\n");
@@ -652,8 +690,8 @@ void exibir_indicadores(Documento *cabeca) {
     }
 
     int total = 0;
-    int por_tipo[6] = {0};
-    int por_categoria[5] = {0};
+    int por_tipo[11] = {0};
+    int por_categoria[7] = {0};
 
     Documento *atual = cabeca;
     while (atual != NULL) {
@@ -663,16 +701,20 @@ void exibir_indicadores(Documento *cabeca) {
         atual = atual->proximo;
     }
 
-    printf("\nTotal de documentos: %d\n", total);
+    printf("Total de documentos: %d\n", total);
 
     printf("\nPor tipo:\n");
-    for (int i = 0; i < 6; i++) {
-        printf("  %s: %d\n", TIPOS[i], por_tipo[i]);
+    for (int i = 0; i < 11; i++) {
+        if (por_tipo[i] > 0) {
+            printf("  %s: %d\n", TIPOS[i], por_tipo[i]);
+        }
     }
 
     printf("\nPor categoria:\n");
-    for (int i = 0; i < 5; i++) {
-        printf("  %s: %d\n", CATEGORIAS[i], por_categoria[i]);
+    for (int i = 0; i < 7; i++) {
+        if (por_categoria[i] > 0) {
+            printf("  %s: %d\n", CATEGORIAS[i], por_categoria[i]);
+        }
     }
 
     printf("\nPor titular:\n");
@@ -704,13 +746,12 @@ void exibir_indicadores(Documento *cabeca) {
     }
 }
 
-
 int main() {
     Documento *cabeca = NULL;  
     int opcao;
 
     do {
-        printf("\n=== CITIZEN ASSIST AI ===\n");
+        printf("\n--- CITIZEN ASSIST AI ---\n");
         printf("(1) Cadastrar \n");
         printf("(2) Pesquisar (titular / tipo / ID)\n");
         printf("(3) Atualizar \n");
@@ -724,7 +765,7 @@ int main() {
 
         switch (opcao) {
             case 1:
-                printf("\n== NOVO CADASTRO ==");
+                printf("\n== NOVO CADASTRO ==\n");
                 cadastrar_documento(&cabeca);
                 break;
             case 2:
