@@ -13,7 +13,7 @@ Global Solution 2026.2 · FIAP · Data Structures and Algorithms (DSA) · Turma 
 
 *Menu principal do programa em execução no terminal.*
 
-<img width="606" height="415" alt="menu" src="https://github.com/user-attachments/assets/b2e5d910-96be-499e-b0da-0289fdef7760" />
+<img width="604" height="378" alt="image" src="https://github.com/user-attachments/assets/fa39c2b8-eaa1-4368-89b9-2d34ebde3d1c" />
 
 ---
 
