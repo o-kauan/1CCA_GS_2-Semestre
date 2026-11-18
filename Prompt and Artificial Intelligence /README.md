@@ -10,6 +10,46 @@
 
 ---
 
+## Como executar a Bridge AI (Google Colab)
+
+A Bridge AI roda no Google Colab e abre uma interface de chat (Streamlit) em outra guia do navegador, por meio de um link temporário.
+
+### Pré-requisitos
+
+- Conta Google (para usar o Colab).
+- Uma chave de API da OpenAI (`OPENAI_API_KEY`). O uso do chat consome créditos da conta dona da chave.
+- A pasta `referencia/` com as fichas `FC-01` a `FC-07` (disponível neste repositório).
+
+### Passo a passo
+
+1. **Abra o notebook** `Bridge_AI.ipynb` no Google Colab e clique em **Arquivo → Salvar uma cópia no Drive**.
+
+2. **Configure a chave da OpenAI**
+   - No menu lateral esquerdo do Colab, clique no ícone de chave (**Secrets**).
+   - Clique em **Adicionar novo segredo**.
+   - Nome: `OPENAI_API_KEY`. Valor: a sua chave.
+   - Ative a opção **Acesso ao notebook**.
+
+3. **Envie as fichas de referência**
+   - No menu lateral, clique no ícone de pasta (**Arquivos**).
+   - Crie a pasta `referencia` dentro de `/content/` e faça upload dos arquivos `FC-01` a `FC-07` (`.md`).
+   - Você vai precisar copiar o **caminho dessa pasta** e utilizar ele para atualizar o código dentro da função `inicializar_agente`.
+   - Também atualize o caminho do arquivo onde será criado o `app.py`, atualize no início da célula de execução da Bridge na prática em `%%writefile "..."`, também atualize ao final em `subprocess.Popen(["streamlit", "run", "...", "--server.port", "8501"])`.
+
+
+4. **Execute o notebook em ordem**
+   - Vá em **Ambiente de execução → Executar tudo**.
+   - Se preferir executar célula por célula, respeite a ordem de cima para baixo. A última célula depende das anteriores, principalmente da que cria o arquivo `app.py`. Ela **não funciona sozinha**.
+
+5. **Acesse a interface**
+   - Ao final da execução da célula "Executando a Bridge na Prática", procure na saída uma URL no formato `https://xxxx-xxxx.trycloudflare.com`.
+   - Copie e abra esse link em **outra guia** do navegador.
+   - Use os botões de categoria (RG, CPF, Título de Eleitor, Carteira de Trabalho, Certidões, CNH) ou digite sua dúvida.
+
+6. **Encerramento**
+   - Mantenha a última célula em execução enquanto estiver usando a IA. Ao interrompê-la, o link deixa de funcionar.
+   - Para usar de novo, execute a célula outra vez. Será gerado um **novo** link.
+
 ## 1. Identificação e Visão Geral do Projeto
 
 **Integrantes**
