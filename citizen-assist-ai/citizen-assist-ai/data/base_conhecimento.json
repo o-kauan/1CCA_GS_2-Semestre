@@ -1,0 +1,285 @@
+[
+  {
+    "id": 1,
+    "categoria": "Previdência",
+    "titulo": "Prova de vida do INSS",
+    "palavras_chave": [
+      "prova de vida",
+      "prova de vida inss",
+      "provar que estou vivo",
+      "comprovacao de vida",
+      "ultima prova de vida"
+    ],
+    "resposta": "A prova de vida é anual, por lei, mas hoje o INSS faz principalmente por cruzamento de dados com outras bases do governo. Em geral, você não precisa ir ao banco nem ao INSS só para provar que está vivo. Contam, por exemplo: entrar no Meu INSS com selo ouro, usar biometria no banco (consignado ou saque), ser atendido no INSS, fazer perícia médica ou o responsável da família atualizar o CadÚnico. Para saber a data da sua última prova de vida, consulte o Meu INSS ou ligue 135. Segundo a página do INSS, os bloqueios por falta de prova de vida foram suspensos por portaria; confirme a situação atual no Meu INSS ou no 135.",
+    "documentos": [
+      "Nenhum, quando a confirmação é feita por cruzamento de dados"
+    ],
+    "onde": "Aplicativo ou site Meu INSS; telefone 135; agência do INSS ou do banco (opcional)",
+    "fonte": "https://www.gov.br/inss/pt-br/noticias/prova-de-vida-nao-foi-suspensa-e-obrigatoria-e-por-cruzamento-de-dados",
+    "verificado_em": "2026-11-11",
+    "exige_presenca": false,
+    "alternativa_remota": "Meu INSS (app ou site) ou telefone 135"
+  },
+  {
+    "id": 2,
+    "categoria": "Alertas e segurança",
+    "titulo": "Alerta de golpe: INSS não faz prova de vida em casa nem por SMS",
+    "palavras_chave": [
+      "golpe",
+      "golpe do inss",
+      "golpe prova de vida",
+      "visita em casa",
+      "mensagem falsa",
+      "sms do inss",
+      "ligacao falsa"
+    ],
+    "resposta": "O INSS não envia servidores à casa do beneficiário para fazer prova de vida e não envia SMS com esse objetivo. Se alguém aparecer na sua casa ou mandar mensagem pedindo prova de vida, trata-se de golpe. Na dúvida, consulte a data da sua última prova de vida no Meu INSS ou pelo telefone 135.",
+    "documentos": [
+      "Nenhum: esta orientação é apenas um alerta"
+    ],
+    "onde": "Meu INSS ou telefone 135, para conferir",
+    "fonte": "https://www.gov.br/inss/pt-br/noticias/prova-de-vida-nao-foi-suspensa-e-obrigatoria-e-por-cruzamento-de-dados",
+    "verificado_em": "2026-11-11",
+    "exige_presenca": false,
+    "alternativa_remota": "Meu INSS ou telefone 135, para conferir antes de acreditar na mensagem"
+  },
+  {
+    "id": 3,
+    "categoria": "Previdência",
+    "titulo": "Aposentadoria por idade rural",
+    "palavras_chave": [
+      "aposentadoria rural",
+      "aposentadoria por idade rural",
+      "aposentadoria do campo",
+      "aposentadoria trabalhador rural",
+      "aposentar rural",
+      "aposentadoria na roca",
+      "aposentar na roca",
+      "aposentar"
+    ],
+    "resposta": "É preciso ter 180 meses (15 anos) de atividade rural e idade mínima de 60 anos (homem) ou 55 anos (mulher). Vale também para pescador artesanal e indígena. O pedido é feito totalmente pela internet, no Meu INSS (busque 'Aposentadoria por idade rural'). A resposta leva em média 45 dias corridos, e você acompanha em 'Consultar Pedidos'.",
+    "documentos": [
+      "Documento de identificação (RG, CIN, CNH ou CTPS)",
+      "CPF",
+      "Se houver procurador ou representante legal: procuração e termo de tutela, curatela ou guarda"
+    ],
+    "onde": "Meu INSS (app ou site); telefone 135; atendimento presencial só se necessário, com agendamento pelo 135",
+    "fonte": "https://www.gov.br/pt-br/servicos/solicitar-aposentadoria-por-idade-para-trabalhador-rural",
+    "verificado_em": "2026-11-11",
+    "exige_presenca": false,
+    "alternativa_remota": "Meu INSS (app ou site) ou telefone 135"
+  },
+  {
+    "id": 4,
+    "categoria": "Previdência",
+    "titulo": "Benefício assistencial ao idoso (BPC/LOAS)",
+    "palavras_chave": [
+      "bpc",
+      "loas",
+      "beneficio assistencial",
+      "beneficio para idoso",
+      "idoso sem aposentadoria",
+      "salario minimo idoso"
+    ],
+    "resposta": "É para pessoas com 65 anos ou mais e renda familiar de até 1/4 do salário mínimo por pessoa. Não é preciso ter contribuído para o INSS. A renda é calculada com dados do CadÚnico, que precisa ter sido atualizado há menos de 2 anos e conter o CPF de todos da família. O pedido é feito pela internet, no Meu INSS, e a resposta pode levar até 45 dias corridos.",
+    "documentos": [
+      "Documento de identificação (RG, CIN, CNH ou CTPS) de quem pede e de todos da família que moram na casa",
+      "CPF de quem pede e de todos da família que moram na casa"
+    ],
+    "onde": "Meu INSS (app ou site); telefone 135; atendimento presencial só se necessário, com agendamento pelo 135",
+    "fonte": "https://www.gov.br/pt-br/servicos/solicitar-beneficio-assistencial-ao-idoso",
+    "verificado_em": "2026-11-11",
+    "exige_presenca": false,
+    "alternativa_remota": "Meu INSS (app ou site) ou telefone 135"
+  },
+  {
+    "id": 5,
+    "categoria": "Previdência",
+    "titulo": "Meu INSS e telefone 135: pedir e acompanhar benefícios sem ir à agência",
+    "palavras_chave": [
+      "meu inss",
+      "135",
+      "central 135",
+      "telefone 135",
+      "aplicativo do inss",
+      "app do inss",
+      "consultar pedido",
+      "consultar pedidos",
+      "agendar atendimento"
+    ],
+    "resposta": "O Meu INSS (aplicativo ou site gov.br/meuinss) funciona com CPF e senha. Nele você pede benefícios, como o BPC e a aposentadoria por idade rural, e acompanha o pedido em 'Consultar Pedidos'. O telefone 135 serve quando o sistema estiver indisponível e para agendar atendimento presencial, que só é necessário quando não der para resolver pela internet.",
+    "documentos": [
+      "CPF e senha do Meu INSS"
+    ],
+    "onde": "App ou site Meu INSS; telefone 135",
+    "fonte": "https://www.gov.br/pt-br/servicos/solicitar-beneficio-assistencial-ao-idoso",
+    "verificado_em": "2026-11-11",
+    "exige_presenca": false,
+    "alternativa_remota": "Meu INSS (app ou site) ou telefone 135"
+  },
+  {
+    "id": 6,
+    "categoria": "Saúde",
+    "titulo": "Cartão SUS (Cartão Nacional de Saúde) e CPF",
+    "palavras_chave": [
+      "cartao sus",
+      "cartao do sus",
+      "cns",
+      "cartao nacional de saude",
+      "sus",
+      "numero do sus"
+    ],
+    "resposta": "O Ministério da Saúde está ligando o Cartão SUS ao CPF: o cartão passa a mostrar nome e CPF no lugar do número do CNS. Quem não tem CPF continua sendo atendido no SUS e recebe um cadastro temporário de até 1 ano; depois é preciso regularizar, com prova de vida e inclusão do CPF. O cartão será digital, sem necessidade de imprimir, e deve ficar disponível no app Meu SUS Digital (na data da notícia, ainda 'em breve').",
+    "documentos": [
+      "CPF"
+    ],
+    "onde": "Atendimento do SUS (UBS) e aplicativo Meu SUS Digital; confirme na sua UBS",
+    "fonte": "https://agenciagov.ebc.com.br/noticias/202509/ministerio-da-saude-comeca-a-emitir-cartao-sus-com-base-no-cpf",
+    "verificado_em": "2026-11-11",
+    "exige_presenca": false,
+    "alternativa_remota": "Aplicativo Meu SUS Digital, quando o cartão digital estiver disponível; se não aparecer, pergunte na UBS"
+  },
+  {
+    "id": 7,
+    "categoria": "Saúde",
+    "titulo": "Vacina contra a gripe para idosos (60 anos ou mais)",
+    "palavras_chave": [
+      "vacina da gripe",
+      "vacina gripe",
+      "gripe",
+      "influenza",
+      "vacinar idoso",
+      "vacinacao idoso",
+      "caderneta de vacinacao"
+    ],
+    "resposta": "Idosos com 60 anos ou mais fazem parte do grupo prioritário da vacinação contra a gripe. A vacina é gratuita pelo SUS, na Unidade Básica de Saúde (UBS) mais próxima de casa. Aproveite para atualizar a caderneta de vacinação, que também pode ser acompanhada no app Meu SUS Digital. A página consultada é da campanha de 2025: confirme na UBS as datas da campanha deste ano.",
+    "documentos": [
+      "Caderneta de vacinação, para atualizar (a página oficial não lista outros documentos)"
+    ],
+    "onde": "Unidade Básica de Saúde (UBS) mais próxima de casa",
+    "fonte": "https://www.gov.br/saude/pt-br/campanhas-da-saude/2025/gripe",
+    "verificado_em": "2026-11-11",
+    "exige_presenca": true,
+    "alternativa_remota": ""
+  },
+  {
+    "id": 8,
+    "categoria": "Saúde",
+    "titulo": "Farmácia Popular: remédios gratuitos",
+    "palavras_chave": [
+      "farmacia popular",
+      "remedio gratuito",
+      "remedio gratis",
+      "remedio de graca",
+      "remedios de graca",
+      "medicamento gratuito",
+      "medicamento gratis"
+    ],
+    "resposta": "Os 41 itens da lista do programa são gratuitos nas farmácias credenciadas (mais de 31 mil no país), com receita médica válida, do SUS ou particular. Procure a farmácia com o símbolo do programa. A informação vem de uma notícia oficial de março de 2025: confira a lista atual no site do Ministério da Saúde.",
+    "documentos": [
+      "Documento oficial com foto e CPF",
+      "Receita médica dentro do prazo de validade"
+    ],
+    "onde": "Farmácias credenciadas, identificadas pelo símbolo do programa Farmácia Popular",
+    "fonte": "https://agenciagov.ebc.com.br/noticias/202503/saiba-como-retirar-medicamentos-e-insumos-pelo-farmacia-popular",
+    "verificado_em": "2026-11-11",
+    "exige_presenca": true,
+    "alternativa_remota": ""
+  },
+  {
+    "id": 9,
+    "categoria": "Saúde",
+    "titulo": "Fraldas geriátricas pelo Farmácia Popular",
+    "palavras_chave": [
+      "fralda geriatrica",
+      "fraldas geriatricas",
+      "fralda",
+      "fraldas",
+      "fralda para idoso",
+      "fralda de idoso"
+    ],
+    "resposta": "Pessoas com 60 anos ou mais podem retirar fraldas geriátricas gratuitamente pelo programa Farmácia Popular, apresentando prescrição, laudo ou atestado médico. Se a pessoa estiver acamada ou impossibilitada de ir, um representante legal ou procurador pode retirar, levando os documentos dos dois e a comprovação da representação, como procuração ou sentença judicial.",
+    "documentos": [
+      "Documento oficial com foto e CPF",
+      "Prescrição, laudo ou atestado médico",
+      "Se retirar por outra pessoa: documentos do paciente e do representante, e procuração ou sentença judicial"
+    ],
+    "onde": "Farmácias credenciadas, identificadas pelo símbolo do programa Farmácia Popular",
+    "fonte": "https://agenciagov.ebc.com.br/noticias/202503/saiba-como-retirar-medicamentos-e-insumos-pelo-farmacia-popular",
+    "verificado_em": "2026-11-11",
+    "exige_presenca": true,
+    "alternativa_remota": ""
+  },
+  {
+    "id": 10,
+    "categoria": "Cadastros e campo",
+    "titulo": "Cadastro Único (CadÚnico)",
+    "palavras_chave": [
+      "cadunico",
+      "cad unico",
+      "cadastro unico",
+      "cras",
+      "bolsa familia",
+      "programas sociais"
+    ],
+    "resposta": "Famílias com renda de até meio salário mínimo por pessoa podem e devem ser registradas. Para se inscrever é preciso ir pessoalmente a um posto do Cadastro Único da sua cidade; se não souber qual, procure o CRAS. Uma pessoa maior de 16 anos pode dar as informações de toda a família, e a entrevista leva cerca de 1 hora. O CadÚnico é usado, por exemplo, no cálculo da renda do BPC.",
+    "documentos": [
+      "Responsável pela família: documento com foto e CPF (de preferência) ou título de eleitor",
+      "Comprovante de endereço (ou declaração de residência assinada pelo responsável)",
+      "Demais pessoas da família: pelo menos um documento de cada uma (CPF, certidão de nascimento ou casamento, RG ou carteira de trabalho)"
+    ],
+    "onde": "Posto de atendimento do Cadastro Único da sua cidade (na dúvida, procure o CRAS)",
+    "fonte": "https://www.gov.br/pt-br/servicos/inscrever-se-no-cadastro-unico-para-programas-sociais-do-governo-federal",
+    "verificado_em": "2026-11-11",
+    "exige_presenca": true,
+    "alternativa_remota": ""
+  },
+  {
+    "id": 11,
+    "categoria": "Cadastros e campo",
+    "titulo": "CAF: Cadastro Nacional da Agricultura Familiar",
+    "palavras_chave": [
+      "caf",
+      "agricultura familiar",
+      "cadastro da agricultura familiar",
+      "cadastro nacional da agricultura familiar",
+      "ricaf",
+      "dap"
+    ],
+    "resposta": "O pedido do CAF é feito presencialmente, em uma entidade pública ou privada autorizada pelo Ministério do Desenvolvimento Agrário (a página oficial permite buscar a entidade por estado e município). Podem pedir famílias de agricultores familiares, beneficiários da reforma agrária, cooperativas e associações, e famílias indígenas, quilombolas, pescadoras e extrativistas.",
+    "documentos": [
+      "CPF dos membros da família com mais de 16 anos",
+      "Comprovação de posse ou propriedade da terra",
+      "Comprovação de renda (IRPF, Bloco de Produtor Rural, Decore contábil ou autodeclaração)"
+    ],
+    "onde": "Entidade autorizada pelo MDA na sua cidade (consulte por estado e município na página oficial)",
+    "fonte": "https://www.gov.br/mda/pt-br/acesso-a-informacao/acoes-e-programas/programas-projetos-acoes-obras-e-atividades/cadastro-nacional-da-agricultura-familiar/como-obter-o-caf",
+    "verificado_em": "2026-11-11",
+    "exige_presenca": true,
+    "alternativa_remota": ""
+  },
+  {
+    "id": 12,
+    "categoria": "Alertas e segurança",
+    "titulo": "Alertas da Defesa Civil por SMS (40199)",
+    "palavras_chave": [
+      "defesa civil",
+      "alerta",
+      "alertas",
+      "alerta de chuva",
+      "enchente",
+      "vendaval",
+      "40199",
+      "sms de alerta"
+    ],
+    "resposta": "Envie um SMS com o CEP da sua região para o número 40199. A Defesa Civil responde com uma confirmação e passa a enviar alertas sobre situações graves, como deslizamentos, inundações e vendavais. O serviço é gratuito. A informação vem da página do Governo do Paraná: confirme com a Defesa Civil do seu estado se o serviço funciona do mesmo jeito onde você mora.",
+    "documentos": [
+      "Apenas o CEP da sua região, digitado no SMS"
+    ],
+    "onde": "Pelo próprio celular: SMS para 40199 com o CEP",
+    "fonte": "https://www.parana.pr.gov.br/servicos/Seguranca/Defesa-Civil/Receber-alertas-da-Defesa-Civil-por-SMS-ERrZ4PN6",
+    "verificado_em": "2026-11-11",
+    "exige_presenca": false,
+    "alternativa_remota": "SMS para 40199 com o CEP da sua região"
+  }
+]
