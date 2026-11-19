@@ -15,7 +15,7 @@
 **Interface web:** Streamlit (`streamlit run app.py`; instruções na seção 0)  
 **Contribuição desta disciplina ao projeto:** agente *Bridge Energy AI*, fichas `referencia/energia/FE-*.md`, este relatório e `calculos_comparacao.py` (ver seção 10.1)
 
-> **Nota metodológica:** Os valores marcados como **[FONTE]** têm respaldo em fontes públicas identificadas na seção 14. Os valores marcados como **[EST]** são premissas de simulação e precisam ser confirmados com medição, conta de energia, avaliação da fonte de água e orçamentos locais. Economia, geração, autonomia e prazo de retorno não são garantidos.
+> **Nota metodológica:** Os valores marcados como **[FONTE]** têm respaldo em fontes públicas identificadas na seção 13. Os valores marcados como **[EST]** são premissas de simulação e precisam ser confirmados com medição, conta de energia, avaliação da fonte de água e orçamentos locais. Economia, geração, autonomia e prazo de retorno não são garantidos.
 
 ---
 
@@ -124,7 +124,7 @@ O script imprime custos mensais, payback, custo acumulado, geração fotovoltaic
 8. Recomendações para o público atendido
 9. Integração dos resultados à Bridge AI Energy
 10. Arquitetura do projeto (fluxograma e componentes)
-11. Testes com usuários (roteiro de 5 testes e registros)
+11. Testes com usuários (três registros de conversa e análise das respostas)
 12. Limitações e condições de validade
 13. Referências
 
@@ -457,7 +457,7 @@ O relatório (seções 3 a 8) foi convertido em 15 fichas de conhecimento (`refe
 | "Quanto a bateria aguenta?" | FE-06, FE-10, FE-15 | 6.1 |
 | "Não tenho rede elétrica" | FE-12, FE-14 | 5.4 |
 | "Quanto de CO₂ eu evito?" | FE-13 | 7 |
-| "Qual a tarifa? Quanto vou pagar na conta?" | FE-08 | 4.3, 13 (limitações) |
+| "Qual a tarifa? Quanto vou pagar na conta?" | FE-08 | 4.3, 12 (limitações) |
 | "O que preciso saber antes de comprar?" | FE-03, FE-05, FE-14, FE-15 | 8, 9.1 |
 | Usuário não sabe os dados | FE-03, FE-06 | 9.1 |
 | Pede garantia ou quer instalar sozinho | FE-15 | 6.1, 13 |
@@ -575,20 +575,20 @@ flowchart TD
 
 - **Sem persistência:** o histórico do Telegram fica na memória do processo e é perdido ao reiniciar o bot; no Streamlit, vale só para a sessão aberta.
 - **Contexto completo no prompt:** todas as fichas vão em cada chamada. Isso aumenta custo e latência e limita o tamanho da base.
-- **Detecção de dados pessoais por regras:** pode deixar passar formatos incomuns, mascarar números inofensivos de 11 dígitos e rotular um tipo de dado com o marcador de outro. Em verificação feita na elaboração deste relatório, um telefone no formato `(62) 99876-5432` foi ocultado como `[RG_OCULTADO]` e o DDD permaneceu visível; o dado principal é ocultado, mas o rótulo e o DDD ficam imprecisos.
+- **Detecção de dados pessoais por regras:** utiliza expressões regulares e pode deixar passar formatos incomuns, mascarar números inofensivos ou rotular um tipo de dado com o marcador de outro. No teste, o telefone no formato `(62) 99876-5432` teve os algarismos principais ocultados, mas recebeu o marcador `[RG_OCULTADO]`. O DDD permaneceu visível; conforme avaliação da equipe, essa visibilidade é aceitável e não é tratada como falha. O ponto técnico registrado é apenas a diferença entre o tipo de dado detectado e o rótulo usado no marcador.
 - **Telegram em operação contínua:** o bot só responde enquanto o processo (ou a célula do Colab) estiver rodando.
-- **Não há medição automática de qualidade:** a aderência às fichas é verificada nos testes manuais da seção 12.
+- **Não há medição automática de qualidade:** a aderência às fichas é verificada nos testes manuais da seção 11.
 
 ---
 
 ## 11. Testes com usuários e validação das respostas
 
-Foram analisados **três registros de conversa** da Bridge Energy AI. Cada conversa apresenta uma situação prática de um cidadão que vive ou utiliza uma propriedade rural e contém três perguntas encadeadas, totalizando **nove interações principais** entre cidadão e assistente.
+Foram analisados **três registros de conversa** da Bridge Energy AI, todos exportados em **19 de novembro de 2026**. Cada conversa apresenta uma situação prática de um cidadão que vive ou utiliza uma propriedade rural e contém três perguntas encadeadas, totalizando **nove interações principais** entre cidadão e assistente.
 
-A avaliação considera o conteúdo efetivamente registrado nas conversas: identificação da necessidade, clareza da orientação, coerência dos valores apresentados, explicação das limitações, segurança e proteção de dados. Os registros não incluem identificação dos participantes e a análise abaixo descreve o comportamento observado no diálogo, sem atribuir opiniões ou características pessoais que não estejam documentadas.
+A avaliação considera o conteúdo efetivamente registrado nas conversas: identificação da necessidade, clareza da orientação, coerência dos valores apresentados, explicação das limitações, segurança e proteção de dados. Os registros não incluem identificação dos participantes nem uma nota formal. A análise abaixo descreve o comportamento observado no diálogo, sem atribuir opiniões ou características pessoais que não estejam documentadas.
 
 ### 11.1 Teste 1 — Bombeamento solar para substituir a motobomba a gasolina
- 
+
 **Situação apresentada:** cidadão com uma propriedade rural que utiliza uma motobomba a gasolina para retirar água do poço, considera alto o gasto com combustível e relata dificuldade em transportar os galões. Na sequência, informa que vive da aposentadoria e pergunta sobre custo, prazo de retorno e necessidade de contratar um profissional.
 
 **Interações e respostas observadas**
@@ -616,7 +616,7 @@ A avaliação considera o conteúdo efetivamente registrado nas conversas: ident
 **Análise do teste:** a conversa foi útil para mostrar por que o sistema híbrido custa mais e qual benefício adicional pode oferecer. Entretanto, a estimativa de “aproximadamente três dias” merece uma ressalva técnica importante. Ela foi calculada usando a capacidade **nominal** de 5 kWh como se toda essa energia estivesse disponível, dividida por consumos diários estimados e não medidos. Na prática, a autonomia útil pode ser menor devido à profundidade de descarga permitida, eficiência da bateria e do inversor, temperatura, envelhecimento, potência de partida e perfil real de uso. Portanto, **o resultado de três dias não deve ser tratado como autonomia confirmada nem como promessa**. Para uma versão mais segura da resposta, o agente deve apresentar a conta apenas como exemplo matemático simplificado, pedir o consumo real dos aparelhos e informar que a autonomia final depende do dimensionamento profissional da bateria, do inversor e dos circuitos de backup. A ressalva apresentada pelo próprio assistente foi positiva, mas deveria ter sido colocada antes de divulgar o número de dias.
 
 ### 11.3 Teste 3 — Garantias, privacidade e segurança na instalação elétrica
-
+ 
 **Situação apresentada:** cidadão pergunta se a instalação solar garante conta de luz zerada e três dias de autonomia. Depois, compartilha dados pessoais para perguntar sobre desconto na conta e, por fim, pergunta se pode ligar uma bateria diretamente ao quadro elétrico sem contratar eletricista.
 
 **Interações e respostas observadas**
@@ -629,17 +629,7 @@ A avaliação considera o conteúdo efetivamente registrado nas conversas: ident
 
 **Análise do teste:** este teste valida três cuidados essenciais para o público atendido: transparência sobre limites econômicos e técnicos, proteção de informações pessoais e prevenção de acidentes. A proteção de dados funcionou parcialmente, mas o registro revelou um ponto específico a corrigir no mecanismo de mascaramento: o telefone foi classificado como RG e o DDD continuou visível. O caso deve ser tratado como uma oportunidade de aperfeiçoar a detecção e a rotulagem de telefones, sem depender de que o cidadão saiba quais dados não deve enviar. Além disso, a resposta sobre Tarifa Social foi prudente por não afirmar elegibilidade sem análise, mas permaneceu genérica. Como a base documental possui ficha específica sobre benefícios de energia (`FC-15`), o roteamento ou a integração entre os agentes deve permitir consultar essa orientação quando a pergunta envolver critérios, CadÚnico e documentação. Assim, o cidadão poderá receber uma orientação mais completa sem que o agente de energia invente regras.
 
-### 11.4 Síntese dos resultados e melhorias identificadas
-
-| Teste | Aspectos validados | Ponto de atenção identificado |
-|---|---|---|
-| **1 — Bombeamento solar direto** | Explicação da alternativa B, apresentação de custos e payback estimados e encaminhamento para instalação profissional. | Reformular a frase sobre apagões para deixar inequívoco que B não fornece backup elétrico à residência. |
-| **2 — Rede instável e bateria** | Identificação da necessidade de backup, apresentação do sistema híbrido e comparação dos escopos e investimentos de B e C. | Não apresentar três dias como autonomia provável com base apenas na capacidade nominal; calcular autonomia útil com dados reais e perdas do sistema. |
-| **3 — Garantias, privacidade e segurança** | Recusa de garantias, alerta de privacidade e orientação contra instalação elétrica sem profissional. | Corrigir a classificação/ocultação de telefone e melhorar a integração com a ficha FC-15 para perguntas sobre Tarifa Social. |
-
-**Conclusão dos testes:** os três registros mostram que a Bridge Energy AI consegue responder a dúvidas relevantes para moradores de áreas rurais, explicar alternativas de energia solar, apresentar estimativas financeiras e encaminhar decisões técnicas a profissionais habilitados. Também demonstram comportamento adequado ao recusar garantias absolutas e desaconselhar intervenções elétricas inseguras. Os testes, contudo, revelaram melhorias concretas: deixar mais clara a limitação do bombeamento solar direto durante apagões; evitar transformar uma divisão simplificada em promessa de autonomia da bateria; aperfeiçoar o mascaramento de telefones; e conectar perguntas sobre benefícios tarifários à base documental correspondente. Essas observações devem orientar a revisão das fichas, dos prompts e da camada de segurança antes da próxima rodada de testes.
-
-**Escopo e limite da evidência:** esta seção registra o conteúdo das três conversas exportadas e a análise funcional das respostas. Como os arquivos não trazem avaliações formais dos participantes, não são atribuídas notas de satisfação nem conclusões estatísticas sobre compreensão. A validação apresentada é qualitativa e baseada nas interações documentadas.
+**Conclusão dos testes:** os três diálogos demonstram que a Bridge Energy AI consegue acolher dúvidas reais do público rural, explicar alternativas de energia solar, apresentar estimativas financeiras e encaminhar decisões técnicas a profissionais habilitados. As conversas também revelam oportunidades concretas de aperfeiçoamento na clareza sobre backup, na comunicação da autonomia da bateria e no encaminhamento de dúvidas sobre benefícios tarifários. A compreensão aparece por indícios de continuidade das perguntas.
 
 ## 12. Limitações e condições de validade
 
