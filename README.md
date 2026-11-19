@@ -3,7 +3,7 @@
 > **Global Solution 2026.2 · FIAP · 1º ano de Ciência da Computação**
 > Desafio **CitizenTech**: *"Da cidade ao campo, tecnologia para a vida cotidiana."*
 >
-> **Bridge AI: o assistente que vai até onde o idoso do campo já está, o WhatsApp.**
+> **Bridge AI: uma ponte simples entre o campo e a cidade, por link no navegador (Streamlit) ou por mensagem no Telegram.**
  
 ---
  
@@ -42,38 +42,29 @@ Consequências no dia a dia de quem fica:
 - o jovem que migrou fica distante e sem forma simples de ajudar.
 ---
  
-## 🛠️ A solução: Bridge AI no WhatsApp
+## 🛠️ A solução: Bridge AI na web (Streamlit) e no Telegram
  
-Os idosos do campo costumam usar o celular com letra grande e ícones grandes, e o **WhatsApp é, muitas vezes, o único aplicativo** que sabem usar para se comunicar. Por isso, em vez de pedir que aprendam um app novo, **levamos o Bridge AI para dentro do WhatsApp**: a conversa funciona **igual ao menu do `main.py` do terminal**, só que no chat.
+O Bridge AI tem **um só cérebro** (base de conhecimento verificada, busca por pontuação e a regra "Vale a viagem?") e **dois canais** para chegar ao idoso do campo e ao familiar que o ajuda:
  
-### Como funciona no WhatsApp
+- **Web (Streamlit):** abre por um **link no navegador**, sem instalar nada e sem cadastro, com letras e botões grandes. Serve para o idoso ou para o neto que está ajudando.
+
+O link: https://tactics-bronze-dream-wife.trycloudflare.com/
+
+- **Telegram:** um **bot** que conversa por mensagem, leve e gratuito, com menu de botões numerados.
+Em ambos, a conversa segue o **mesmo menu do `main.py` do terminal**.
+
+O link: https://t.me/Bridge_AI_Energy_bot
+
+---
  
-- **Menu por números:** a pessoa responde só com um número, como no terminal (1 = fazer uma pergunta, 2 = ver por assunto, 0 = sair). Não precisa digitar nada difícil.
-- **Áudio:** o idoso, ou o filho/neto que está ajudando, pode **mandar um áudio** com a dúvida. O áudio é transcrito para texto e entra na mesma busca por pontuação. O assistente confirma antes de responder: *"Entendi: 'como faço o cartão do SUS'. Está certo? 1 = sim, 2 = não."*
-- **Resposta curta e clara:** texto em frases curtas, com emojis grandes, sempre com **fonte, data e aviso de limitação**. Quando não encontra, diz **"não sei"** e orienta onde procurar.
+### Como funciona
+ 
+- **Menu por números:** a pessoa toca ou responde só com um número, como no terminal (1 = fazer uma pergunta, 2 = ver por assunto, 0 = sair). Não precisa digitar nada difícil.
+- **Áudio:** quem usa, ou o filho/neto que está ajudando, pode **mandar um áudio** com a dúvida. O áudio é transcrito para texto e entra na mesma busca por pontuação. O assistente confirma antes de responder: *"Entendi: 'como faço o cartão do SUS'. Está certo? 1 = sim, 2 = não."*
+- **Resposta curta e clara:** frases curtas, sempre com **fonte, data e aviso de limitação**. Quando não encontra, diz **"não sei"** e orienta onde procurar.
 - **"Vale a viagem?":** depois da resposta, o assistente pergunta *"Você tem os documentos? 1 = sim, 2 = não"* e aplica a mesma regra `S = P · (D + U)`.
-Exemplo de conversa (simulação do que o protótipo fará):
  
-```
-Bridge AI 🌾  Olá! Eu ajudo com dúvidas do dia a dia.
-              Responda com um número:
-              1️⃣  Fazer uma pergunta
-              2️⃣  Ver por assunto
-              0️⃣  Sair
- 
-Idoso         1
-Bridge AI 🌾  Pode escrever ou mandar um áudio 🎤
- 
-Idoso         🎤 (áudio)
-Bridge AI 🌾  Entendi: "como faço o cartão do SUS". Está certo?
-              1️⃣ Sim   2️⃣ Não
- 
-Idoso         1
-Bridge AI 🌾  📌 Cartão SUS e CPF ... (resposta curta, com fonte e data)
-              🚌 Vale a viagem? Não precisa ir: dá para resolver à distância.
-```
- 
-> **Importante:** a decisão continua sendo das **regras** (busca por pontuação e `S = P · (D + U)`). A tecnologia do WhatsApp e do áudio só muda **por onde** a pessoa conversa.
+> **Importante:** a decisão continua sendo das **regras** (busca por pontuação e `S = P · (D + U)`). Web, Telegram e áudio só mudam **por onde** a pessoa conversa.
  
 ### Núcleo: "Vale a viagem?"
  
@@ -111,7 +102,7 @@ Quem decide se vale a viagem é uma **regra lógica**, não um modelo de linguag
 O verdadeiro problema do campo é o sinal.
  
 - Base de conhecimento **local** (ChromaDB roda na própria máquina), com respostas offline e sincronização quando houver conexão.
-- **No WhatsApp:** as mensagens são **leves** (texto curto e áudio pequeno), o que funciona melhor em conexão fraca do que um site ou app pesado. O WhatsApp precisa de alguma conexão; o **protótipo em terminal** continua funcionando 100% offline.
+- **Na web e no Telegram:** é preciso ter internet, mas as mensagens são **leves** (texto curto e áudio pequeno). O **protótipo em terminal** continua funcionando 100% offline.
 - Possível implantação como **quiosque** em associação de moradores, posto de saúde ou escola rural.
 - **Modo baixa conexão:** respostas curtas, sem imagens pesadas, versão em texto simples e **cartão impresso** com as perguntas mais comuns.
 - **No protótipo em Python,** a base é um arquivo JSON local, então o assistente já **funciona sem internet**.
@@ -123,7 +114,7 @@ O verdadeiro problema do campo é o sinal.
 - Na orientação sobre **alertas da Defesa Civil**, o protótipo ensina a receber avisos de chuva forte, enchente e vendaval por **SMS** (sem internet).
 ### Acessibilidade
  
-- **WhatsApp como canal principal:** o idoso já conhece o app, as letras e os ícones grandes do celular dele valem para o chat, e a conversa por **números** é simples de seguir.
+- **Dois canais simples:** o link no navegador (sem instalar nada) e o Telegram (conversa por mensagem), ambos com letras e botões grandes e menu por **números**, como no terminal.
 - Linguagem simples, frases curtas e **áudio de entrada** (e, depois, de saída) para quem tem dificuldade de digitar ou ler.
 - **Evolução pensada para quem não tem smartphone:** atendimento por **ligação de telefone comum** (menu por teclas e, depois, voz), que funciona até em celular de teclas.
 ### Modo família
@@ -142,7 +133,7 @@ O protótipo entregue na disciplina de Python é um assistente **no terminal, ba
 | **Busca por pontuação** (+3 por palavra-chave, +1 por palavra do título) com confiança ALTA, MÉDIA ou "não encontrei" | Busca semântica com embeddings |
 | Módulo **"Vale a viagem?"** com a regra `S = P · (D + U)` | Estimativa de fila, horários de ônibus e agendamento |
 | **Bloqueio de dados pessoais** (8 ou mais dígitos ou `@` são recusados e não registrados) | Guardrails de escopo e prompt injection |
-| Navegação por categorias, entradas inválidas tratadas e arquivo ausente ou corrompido sem travar | **Canal WhatsApp:** menu por números como o `main.py`, mensagens de áudio transcritas, respostas curtas |
+| Navegação por categorias, entradas inválidas tratadas e arquivo ausente ou corrompido sem travar | **Canais web (Streamlit) e Telegram:** menu por números como o `main.py`, áudios transcritos, respostas curtas |
 | **Histórico, indicadores e exportação em CSV** | Voz por ligação de telefone, modo família, módulo clima integrado |
 | Funciona **sem internet** (base local) | Sincronização quando houver conexão |
  
@@ -181,10 +172,10 @@ Idosos rurais, familiares na cidade, agentes comunitários de saúde, sindicatos
 Idosos de comunidades rurais com acesso limitado a internet e a atendimento presencial, e as famílias que os apoiam à distância.
  
 **Como a solução vai funcionar?**
-O usuário abre a conversa no **WhatsApp**, escolhe uma opção por número e pergunta por texto ou áudio. O sistema busca em uma base de documentos verificada, responde com fonte e data e, se não tiver certeza, diz "não sei" e orienta onde procurar. Em seguida, o módulo "Vale a viagem?" diz se a pessoa precisa ir ou se resolve à distância. Funciona offline com base local e sincroniza quando há conexão.
+O usuário abre o Bridge AI no **navegador (Streamlit)** ou no **Telegram**, escolhe uma opção por número e pergunta por texto ou áudio. O sistema busca em uma base de documentos verificada, responde com fonte e data e, se não tiver certeza, diz "não sei" e orienta onde procurar. Em seguida, o módulo "Vale a viagem?" diz se a pessoa precisa ir ou se resolve à distância. A versão em terminal funciona offline com base local; a web e o Telegram usam a mesma base.
  
 **Quais tecnologias serão usadas?**
-Python, **WhatsApp** (API oficial do WhatsApp Business, com um servidor que recebe as mensagens), RAG (ChromaDB + LangChain), embeddings, reconhecimento e síntese de voz (transcrição dos áudios), C (estruturas de dados), álgebra booleana, regressão (ML), dados abertos de clima e guardrails (LGPD, escopo, prompt injection). No protótipo em Python: JSON, orientação a objetos, busca por pontuação e álgebra booleana.
+Python, **Streamlit** (interface web) e **Telegram** (Bot API), RAG (ChromaDB + LangChain), embeddings, reconhecimento e síntese de voz (transcrição dos áudios), C (estruturas de dados), álgebra booleana, regressão (ML), dados abertos de clima e guardrails (LGPD, escopo, prompt injection). No protótipo em Python: JSON, orientação a objetos, busca por pontuação e álgebra booleana.
  
 **Qual problema será resolvido?**
 A dificuldade de acessar informação confiável e de resolver pendências sem deslocamentos desnecessários até a cidade, além da exposição a golpes.
@@ -216,24 +207,22 @@ O case pede protótipo testável com usuários. Vamos testar com **no mínimo 5 
 | **"Não sei" corretos** | % de vezes em que o assistente admitiu não saber em vez de inventar |
 | **Resposta encontrada** | % de atendimentos em que existia uma orientação para a dúvida |
 | **Tentativas por atendimento** | Quantas vezes a pessoa precisou reescrever a pergunta |
-
----
-
-## Teste com 3 usuários
-> Uma idosa de 90 anos, uma adulta de 50 anos e um jovem de 20 anos
-  
+ 
+No protótipo em Python, esses indicadores são calculados automaticamente a partir de `data/historico.json` e exportados em `data/atendimentos.csv`. A disciplina de Python exige no mínimo **3 pessoas de fora da equipe e 10 atendimentos**; o nosso objetivo de 5 idosos reais cobre essa exigência.
+ 
+### Resultados dos testes **[PREENCHER depois dos testes]**
+ 
 | Indicador | Resultado |
 |---|---|
-| Atendimentos | 12 |
-| Resposta encontrada (%) | 75% |
-| Taxa de acerto (%) | 66.7% |
-| Tempo médio para encontrar | 18.4 segundos |
-| Tentativas por atendimento | 2 |
-| Facilidade de uso (1 a 5) | 4.8 |
-| Orientações que evitaram uma viagem (%) | 75.0% |
+| Pessoas testadas / atendimentos | [PREENCHER] |
+| Taxa de acerto (%) | [PREENCHER] |
+| Tempo médio para encontrar (s) | [PREENCHER] |
+| Facilidade de uso (1 a 5) | [PREENCHER] |
+| Viagens evitadas (%) | [PREENCHER] |
+| Dúvidas sem solução | [PREENCHER] |
+| Melhoria feita a partir do teste | [PREENCHER] |
  
-**Dúvidas sem solução:** Consulta sobre cidadania portuguesa (fora do escopo inicial de serviços nacionais/públicos cadastrados)
-**Melhoria feita a partir do teste:** Inclusão de novas palavras-chave e sinônimos populares no JSON da base de conhecimento (focando em termos informais de saúde e previdência para facilitar a busca dos usuários).
+Registros dos testes ficam em `docs/testes-usuarios/`. Não registrar nomes nem dados das pessoas.
  
 ---
  
@@ -241,7 +230,7 @@ O case pede protótipo testável com usuários. Vamos testar com **no mínimo 5 
  
 - **Não é canal oficial.** Todas as respostas trazem aviso e indicam o órgão responsável.
 - **Sem dados pessoais desnecessários.** O assistente não pede CPF, endereço ou dados bancários. No protótipo, pergunta com **8 ou mais dígitos** ou com **@** é recusada e **não é registrada**.
-- **No WhatsApp**, o número de telefone chega ao sistema por natureza do canal. Pretendemos **não guardar o número** (usar apenas um identificador anônimo para manter a conversa) e **não guardar o áudio** depois de transcrito. Essa parte precisa ser validada com a LGPD antes de um uso real.
+- **No Telegram**, o bot recebe o identificador e o nome de exibição da conta, mas **não o número de telefone** (só se a pessoa o compartilhar). **Na web (Streamlit)** não há login. Pretendemos **não guardar nome nem identificador** além da conversa e **não guardar o áudio** depois de transcrito. Essa parte precisa ser validada com a LGPD antes de um uso real.
 - **Toda resposta com fonte e data.** Informação sem fonte verificável não entra na base.
 - **Armadilha de contradição/desatualização** documentada na base (exigência da disciplina de IA), com tratamento explícito.
 - **Guardrails:** escopo (só responde dentro do tema), prompt injection na fonte e LGPD.
@@ -251,24 +240,13 @@ O case pede protótipo testável com usuários. Vamos testar com **no mínimo 5 
 - No protótipo, a busca é por **palavras-chave e pontuação**: ela só responde o que está na base e pode não entender frases muito diferentes das palavras-chave cadastradas.
 - A base tem 12 orientações. As regras dos serviços **mudam**, então as fontes precisam ser reconferidas de tempos em tempos.
 - Algumas fontes são **notícias oficiais de 2025** (Cartão SUS, Farmácia Popular, vacina da gripe), e a orientação sobre alertas da Defesa Civil usa a página do **Paraná**; o texto de cada orientação avisa quando é preciso confirmar a informação atual.
-- O **canal WhatsApp ainda não está implementado**: o que está pronto é o protótipo em terminal. O WhatsApp exige conta Business e aprovação da Meta, e a transcrição de áudio pode **errar** (por isso o assistente confirma o que entendeu antes de responder).
+- Os canais **web e Telegram dependem de internet**, que pode ser instável no campo; só o terminal é offline. O **Telegram é menos usado que o WhatsApp** entre idosos, então pode precisar de um familiar para instalar; o link do navegador serve de alternativa sem instalação. A transcrição de áudio pode **errar** (por isso o assistente confirma o que entendeu antes de responder).
 - A regra do "Vale a viagem?" **orienta**, mas não confirma direitos nem prazos: a decisão final é sempre da pessoa, junto ao órgão responsável.
 ---
  
 ## 🎬 Vídeo pitch (até 3 minutos)
- 
-Para o prêmio, o pitch precisa **prender nos primeiros segundos** e mostrar a novidade: **a tecnologia chega ao idoso pelo app que ele já usa**.
- 
-| Tempo | O que mostrar | Ideia da fala |
-|---|---|---|
-| 0:00–0:20 | **Gancho:** imagens do campo e um idoso olhando o celular | *"Imagine ter 70 anos, morar a duas horas da cidade e descobrir, depois da viagem, que faltava um documento."* |
-| 0:20–0:50 | **Problema:** envelhecimento rural, viagem à toa, golpes | Dados do IBGE/Embrapa (confirmar e citar) e a pergunta: *"Vale a viagem?"* |
-| 0:50–1:20 | **Solução:** o Bridge AI no WhatsApp | *"Sem app novo, sem cadastro: é só mandar um número ou um áudio no WhatsApp."* |
-| 1:20–2:10 | **Demonstração:** conversa no WhatsApp (simulação) e o protótipo em Python rodando | Pergunta de áudio → resposta com fonte → "Não precisa ir". Avisar que o canal WhatsApp é **simulado** e que a busca real roda no protótipo. |
-| 2:10–2:35 | **Diferencial:** regras e fontes oficiais, nunca inventa, não é canal oficial | *"A IA conversa, as regras decidem."* |
-| 2:35–3:00 | **Impacto e fecho:** ODS, modo família, indicadores | *"Da cidade ao campo: a tecnologia que vai até onde o idoso já está."* |
- 
-Dicas: abrir com imagem e fala, não com apresentação do grupo; mostrar a tela do celular com letra grande; terminar com o nome **Bridge AI**.
+
+
  
 ---
  
@@ -282,7 +260,7 @@ Ideias que surgiram no brainstorm. Algumas viram módulos, outras ficam como pos
 - **Modo família** — resumo das orientações enviado a um parente.
 - **Saúde e benefícios** — posto de saúde, vacinação, medicamentos de uso contínuo, aposentadoria rural, sempre com fonte.
 - **Modo baixa conexão** — texto simples, SMS ou cartão impresso.
-- **Atendimento por ligação de telefone** — menu por teclas (1 = sim, 2 = não) e, depois, voz; funciona sem app e sem internet. Fica como evolução para quem **não** tem smartphone, depois do WhatsApp.
+- **Atendimento por ligação de telefone** — menu por teclas (1 = sim, 2 = não) e, depois, voz; funciona sem app e sem internet. Fica como evolução para quem **não** tem smartphone, depois dos canais web e Telegram.
 - **Contador de impacto** — cada consulta mostra a viagem, o tempo e o dinheiro poupados (como estimativa declarada, com fonte).
 - **Ponte humana** — quando a IA não sabe, diz "não sei" e encaminha para um familiar, agente comunitário ou sindicato.
 - **Simulador de impacto para o gestor público** — quanto tempo e dinheiro se poupa se mil idosos deixarem de fazer uma viagem desnecessária.
