@@ -1,0 +1,8 @@
+streamlit>=1.39
+openai>=1.40
+langgraph
+langchain-openai
+langchain-core
+pydantic>=2
+pyTelegramBotAPI
+requests
